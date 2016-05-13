@@ -1,0 +1,12 @@
+<phpunit bootstrap="bootstrap.php" colors="true">
+    <testsuites>
+        <testsuite name="Routers">
+            <file>./Unit/ElegantPHP/Routers/FastRouterTest.php</file>
+        </testsuite>
+    </testsuites>
+    <filter>
+        <whitelist addUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">../src/</directory>
+        </whitelist>
+    </filter>
+</phpunit>
