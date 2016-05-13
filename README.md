@@ -4,7 +4,7 @@ A pure PHP Framework.
 
 **Attention: THIS IS NOT PRODUCTION READY!**
 
-## Running Tests
+### Running Tests
 
 Before running tests you must to run composer:
 
