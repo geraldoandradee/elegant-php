@@ -1,4 +1,4 @@
-# Elegant PHP Framework (pre-alpha)
+# Elegant PHP Framework (pre-alpha) [![Build Status](https://travis-ci.org/geraldoandradee/elegant-php.svg?branch=master)](https://travis-ci.org/geraldoandradee/elegant-php)
 
 A pure PHP Framework.
 
