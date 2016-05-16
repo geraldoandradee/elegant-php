@@ -2,15 +2,8 @@
 
 namespace ElegantPHP\Controllers;
 
-class ControllerExampleTest extends BaseController
-{
-
-}
-
 class BaseControllerTest extends \PHPUnit_Framework_TestCase
 {
-
-
     /**
      * Standard base path is
      **/

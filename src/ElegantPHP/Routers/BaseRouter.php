@@ -13,5 +13,5 @@ interface BaseRouter
      * @param $path
      * @return mixed
      */
-    public function init($path, $params);
+    public function init($path, $params, $controller = null);
 }
