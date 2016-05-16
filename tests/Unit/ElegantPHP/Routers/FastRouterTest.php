@@ -40,4 +40,10 @@ class FastRouterTest extends PHPUnit_Framework_TestCase
         $this->router->set('uma', 'coisa');
         $this->assertEquals('coisa', $this->router->get('uma'), 'Get must return coisa');
     }
+
+    public function testGetController()
+    {
+        $this->router->init($this->uri, $this->queryString, 'ControllerExampleTest');
+//        $this->assertTrue($this->router->getController() instanceof \ElegantPHP\Controllers\ControllerExampleTest);
+    }
 }

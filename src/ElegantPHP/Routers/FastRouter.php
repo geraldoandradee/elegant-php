@@ -2,9 +2,12 @@
 
 namespace ElegantPHP\Routers;
 
+use ElegantPHP\Controllers;
+
 class FastRouter implements BaseRouter
 {
     private static $instance = null;
+    private $controller = null;
     private $uri;
     private $queryString;
     private $getParams = [];
@@ -26,18 +29,23 @@ class FastRouter implements BaseRouter
     /**
      * @param $path
      * @param $queryString
+     * @param null $controller
      * @return mixed
      */
-    public function init($path, $queryString)
+    public function init($path, $queryString, $controller = null)
     {
         $this->uri = $path;
         $this->queryString = $queryString;
         $this->parseGetString();
+        $this->controller = $controller;
     }
 
     public function getController()
     {
-
+        if (!is_null($this->controller)) {
+            $controller = $this->controller;
+//            return new $controller();
+        }
 
     }
 
@@ -55,7 +63,7 @@ class FastRouter implements BaseRouter
 
     public function getParams()
     {
-        return count($this->getParams) > 0 ? $this->getParams: null;
+        return count($this->getParams) > 0 ? $this->getParams : null;
     }
 
     public function get($paramName)

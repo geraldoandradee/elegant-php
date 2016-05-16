@@ -11,6 +11,11 @@ class BaseController
 
     }
 
+    /**
+     * @param string $viewName
+     * @param array $params
+     * @return string
+     */
     public function loadView($viewName='index', $params = array())
     {
         if (!is_null($params) || count($params) > 0) {
@@ -18,7 +23,7 @@ class BaseController
         }
 
         ob_start();
-        include $this->getViewPath();
+        include $this->getViewPath($viewName);
         return ob_get_clean();
     }
 
