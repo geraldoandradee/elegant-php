@@ -43,7 +43,7 @@ class BaseController
 
     public function getApp()
     {
-        $c = explode('\\', get_class($this));
-        return $c[count($c) - 1];
+        $fullControllerName = explode('\\', get_class($this));
+        return $fullControllerName[count($fullControllerName) - 1];
     }
 }
