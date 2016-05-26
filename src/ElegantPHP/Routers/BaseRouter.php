@@ -2,16 +2,16 @@
 
 namespace ElegantPHP\Routers;
 
+use ElegantPHP\Routers\FastRouter\RouteCollection;
+
 interface BaseRouter
 {
     /**
+     * @param $httpMethod $_SERVER['REQUEST_METHOD']
+     * @param $uri $_SERVER['REQUEST_URI']
      * @return mixed
      */
-    public function dispatch();
+    public function dispatch($httpMethod, $uri);
 
-    /**
-     * @param $path
-     * @return mixed
-     */
-    public function init($path, $params, $controller = null);
+    public function init(RouteCollection $collection);
 }

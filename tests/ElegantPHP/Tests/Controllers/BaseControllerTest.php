@@ -1,6 +1,8 @@
 <?php
 
-namespace ElegantPHP\Controllers;
+namespace ElegantPHP\Tests\Controlllers;
+
+use ElegantPHP\Controllers\BaseController;
 
 class BaseControllerTest extends \PHPUnit_Framework_TestCase
 {

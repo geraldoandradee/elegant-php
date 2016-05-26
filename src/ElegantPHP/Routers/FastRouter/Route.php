@@ -1,14 +1,23 @@
 <?php
 
-namespace ElegantPHP\Routers;
+namespace ElegantPHP\Routers\FastRouter;
 
 
 class Route
 {
-    private $name = '';
-    private $method = 'GET';
-    private $pattern = '';
-    private $controller = '';
+    private $name;
+    private $method;
+    private $pattern;
+    private $controller;
+    private $static = false;
+
+    public function __construct($pattern, $controller, $name = '', $method = 'GET')
+    {
+        $this->setPattern($pattern);
+        $this->setController($controller);
+        $this->setName($name);
+        $this->setMethod($method);
+    }
 
     /**
      * @return string
@@ -76,5 +85,21 @@ class Route
     public function setController($controller)
     {
         $this->controller = $controller;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getStatic()
+    {
+        return $this->static;
+    }
+
+    /**
+     * @param bool $static
+     */
+    public function setStatic($static)
+    {
+        $this->static = boolval($static);
     }
 }

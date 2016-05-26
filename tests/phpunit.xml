@@ -1,7 +1,7 @@
 <phpunit bootstrap="bootstrap.php" colors="true">
     <testsuites>
-        <testsuite name="Routers">
-            <file>./Unit/ElegantPHP/Routers/FastRouterTest.php</file>
+        <testsuite name="All Tests">
+            <directory>.</directory>
         </testsuite>
     </testsuites>
     <filter>
