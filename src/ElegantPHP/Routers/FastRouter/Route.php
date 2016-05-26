@@ -90,7 +90,7 @@ class Route
     /**
      * @return bool
      */
-    public function getStatic()
+    public function isStatic()
     {
         return $this->static;
     }
