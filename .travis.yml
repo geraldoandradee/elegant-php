@@ -8,9 +8,5 @@ install: "composer self-update && composer install"
 
 script: "phpunit -c tests"
 
-addons:
-  code_climate:
-    repo_token: c7c30326ca2a65d43adea101a60fc70dfe232b4982e2cc68cc7af2443724c779
-
 after_script:
-  - vendor/bin/test-reporter
+  - vendor/bin/test-reporter --coverage-report=tests/logs/clover.xml
