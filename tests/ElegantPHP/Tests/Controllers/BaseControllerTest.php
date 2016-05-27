@@ -13,6 +13,7 @@ class BaseControllerTest extends \PHPUnit_Framework_TestCase
     {
         $controller = new BaseController();
         $this->assertEquals("BaseController", $controller->getApp());
+        $this->assertEquals("ElegantPHP\\Controllers\\BaseController", $controller->getApp(true));
 
         $controller = new ControllerExampleTest();
         $this->assertEquals("ControllerExampleTest", $controller->getApp());

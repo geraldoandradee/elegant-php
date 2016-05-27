@@ -16,7 +16,7 @@ class BaseController
      * @param array $params
      * @return string
      */
-    public function loadView($viewName='index', $params = array())
+    public function loadView($viewName = 'index', $params = array())
     {
         if (!is_null($params) || count($params) > 0) {
             extract($params);
@@ -27,7 +27,8 @@ class BaseController
         return ob_get_clean();
     }
 
-    public function getViewPath($viewName) {
+    public function getViewPath($viewName)
+    {
         return $this->getBasePath() . DIRECTORY_SEPARATOR . "view" . DIRECTORY_SEPARATOR . $this->getApp() . DIRECTORY_SEPARATOR . $viewName . ".php";
     }
 
@@ -41,9 +42,22 @@ class BaseController
         $this->basePath = $basePath;
     }
 
-    public function getApp()
+    /*
+     * This must return a class name.
+     *
+     * This will be used:
+     *
+     * * This will be used in MVC to get controller's view folder.
+     *
+     * **/
+    public function getApp($fullController = false)
     {
-        $fullControllerName = explode('\\', get_class($this));
-        return $fullControllerName[count($fullControllerName) - 1];
+        $fullControllerName = get_class($this);
+
+        if ($fullController) {
+            return $fullControllerName;
+        }
+        $explodedControllerName = explode('\\', $fullControllerName);
+        return $explodedControllerName[count($explodedControllerName) - 1];
     }
 }
