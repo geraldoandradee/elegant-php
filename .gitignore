@@ -3,3 +3,4 @@ vendor
 composer.phar
 phpunit.phar
 composer.lock
+clover.xml
