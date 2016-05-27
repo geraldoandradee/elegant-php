@@ -42,14 +42,16 @@ class BaseController
         $this->basePath = $basePath;
     }
 
-    /*
+    /**
      * This must return a class name.
      *
      * This will be used:
      *
      * * This will be used in MVC to get controller's view folder.
      *
-     * **/
+     * @param bool $fullController True to get class full name
+     * @return string
+     */
     public function getApp($fullController = false)
     {
         $fullControllerName = get_class($this);
