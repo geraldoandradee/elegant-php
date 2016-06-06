@@ -4,6 +4,7 @@ namespace ElegantPHP\Tests\Routers\FastRouter;
 
 
 use ElegantPHP\Routers\FastRouter\Matcher;
+use ElegantPHP\Routers\FastRouter\Route;
 
 class MatcherTest extends \PHPUnit_Framework_TestCase
 {
@@ -32,6 +33,23 @@ class MatcherTest extends \PHPUnit_Framework_TestCase
 
         $this->assertNotNull($matcher->getParam('permalink'), 'Params count must be five');
         $this->assertEquals('how-to-make-tests-securely', $matcher->getParam('permalink'), 'Params count must be five');
+    }
 
+    public function testGetSetParam() {
+        $matcher = Matcher::getInstance();
+        $matcher->setPattern('/post\/$/');
+        $_SERVER['REQUEST_URI'] = '/post/';
+        $matcher->setParam('id', 12);
+        $this->assertEquals(12, $matcher->getParam('id'), 'It must return 12');
+        $this->assertNull($matcher->getParam('not_exists'), 'It must return null');
+    }
+
+    public function testGetSetRoute() {
+        $matcher = Matcher::getInstance();
+        $matcher->setPattern('/post\/$/');
+        $_SERVER['REQUEST_URI'] = '/post/';
+        $route = new Route('/post\/$/', 'ControllerTest', 'home-post');
+        $matcher->setRoute($route);
+        $this->assertEquals($route, $matcher->getRoute(), 'Must be same instance');
     }
 }

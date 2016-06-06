@@ -11,5 +11,6 @@
     </filter>
     <logging>
         <log type="coverage-clover" target="./logs/clover.xml"/>
+        <log type="coverage-html" target="./build/unit_coverage" title="elegant-php" charset="UTF-8" yui="true" highlight="true" lowUpperBound="5" highLowerBound="70" />
     </logging>
 </phpunit>
