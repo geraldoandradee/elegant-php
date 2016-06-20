@@ -51,9 +51,12 @@ class Matcher extends BaseFactory
 
     public function match()
     {
-        $hasMatched = (bool)preg_match($this->getPattern(), $this->getRequestUri(), $matches);
-
-        $this->setParams($matches);
+        if (!is_null($this->getRoute()) && $this->getRoute()->isStatic()) {
+            $hasMatched = $this->getRequestUri() == $this->getPattern();
+        } else {
+            $hasMatched = (bool)preg_match($this->getPattern(), $this->getRequestUri(), $matches);
+            $this->setParams($matches);
+        }
 
         return $hasMatched;
     }
@@ -83,7 +86,7 @@ class Matcher extends BaseFactory
     }
 
     /**
-     * @return mixed
+     * @return Route
      */
     public function getRoute()
     {

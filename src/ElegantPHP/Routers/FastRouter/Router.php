@@ -37,12 +37,6 @@ class Router extends BaseFactory implements BaseRouter
     private function match(Route $route)
     {
         return Matcher::getInstance()->setRoute($route)->match();
-
-//        if ($route->isStatic() && $route->getPattern() === $this->getUri() &&
-//            $route->getMethod() === $this->getHttpMethod()) {
-//            return true;
-//        }
-//        return false;
     }
 
     /**
