@@ -120,15 +120,9 @@ class HttpStatus
      * @param int $code The HTTP code
      * @param string $message (optional) HTTP message for the corresponding code
      */
-    public function __construct($code, $message = null)
+    public function __construct($code)
     {
         $this->setCode($code);
-
-        if (null === $message) {
-            $message = static::getMessageFromCode($code);
-        }
-
-        $this->message = $message;
     }
 
     /**
@@ -148,11 +142,6 @@ class HttpStatus
      */
     public function getMessage()
     {
-        return $this->message;
-    }
-
-    public function getMessageCode()
-    {
         return static::$http_messages[$this->getCode()];
     }
 
@@ -169,18 +158,6 @@ class HttpStatus
     }
 
     /**
-     * Set the HTTP status message
-     *
-     * @param string $message
-     * @return HttpStatus
-     */
-    public function setMessage($message)
-    {
-        $this->message = (string)$message;
-        return $this;
-    }
-
-    /**
      * Get a string representation of our HTTP status
      *
      * @return string
@@ -189,39 +166,10 @@ class HttpStatus
     {
         $string = (string)$this->code;
 
-        if (null !== $this->message) {
-            $string = $string . ' ' . $this->message;
+        if (null !== $this->getMessage()) {
+            $string = $string . ' ' . $this->getMessage();
         }
 
         return $string;
-    }
-
-    /**
-     * Magic "__toString" method
-     *
-     * Allows the ability to arbitrarily use an instance of this class as a string
-     * This method will be automatically called, returning a string representation
-     * of this instance
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        return $this->getFormattedString();
-    }
-
-    /**
-     * Get HTTP message from code. It returns null if no corresponding message.
-     *
-     * @param int $int
-     * @return string|null
-     */
-    public static function getMessageFromCode($int)
-    {
-        if (isset(static::$http_messages[$int])) {
-            return static::$http_messages[$int];
-        } else {
-            return null;
-        }
     }
 }

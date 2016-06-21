@@ -1,9 +1,9 @@
 <?php
-
-namespace ElegantPHP\Services\Users\Permissions;
-
-interface UserPermissionInterface
-{
-    public function hasPermission();
-
-}
+//
+//namespace ElegantPHP\Services\Users\Permissions;
+//
+//interface UserPermissionInterface
+//{
+//    public function hasPermission();
+//
+//}

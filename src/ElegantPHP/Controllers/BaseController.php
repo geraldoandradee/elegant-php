@@ -6,11 +6,6 @@ class BaseController
 {
     private $basePath;
 
-    public function __construct()
-    {
-
-    }
-
     /**
      * @param string $viewName
      * @param array $params

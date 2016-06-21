@@ -3,6 +3,7 @@
 namespace ElegantPHP\Tests\Routers\FastRouter;
 
 
+use ElegantPHP\Factory\Builder;
 use ElegantPHP\Routers\FastRouter\Matcher;
 use ElegantPHP\Routers\FastRouter\Route;
 
@@ -51,5 +52,17 @@ class MatcherTest extends \PHPUnit_Framework_TestCase
         $route = new Route('/post\/$/', 'ControllerTest', 'home-post');
         $matcher->setRoute($route);
         $this->assertEquals($route, $matcher->getRoute(), 'Must be same instance');
+    }
+
+    public function testGetSetRouteStatic() {
+        $matcher = Builder::getInstance('ElegantPHP\Routers\FastRouter\Matcher');
+        $matcher->setPattern('/contato.html');
+        $_SERVER['REQUEST_URI'] = '/contato.html';
+
+        $route = new Route('/contato.html', 'ControllerTest', 'home-post');
+        $route->setStatic(true);
+        $matcher->setRoute($route);
+
+        $this->assertTrue($matcher->match(), 'It must match');
     }
 }

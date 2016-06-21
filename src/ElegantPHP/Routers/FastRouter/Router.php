@@ -2,7 +2,6 @@
 
 namespace ElegantPHP\Routers\FastRouter;
 
-
 use ElegantPHP\Factory\BaseFactory;
 use ElegantPHP\Routers\BaseRouter;
 

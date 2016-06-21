@@ -7,14 +7,6 @@ class BaseFactory
 {
     protected static $instances = array();
 
-    private function __construct()
-    {
-    }
-
-    final private function __clone()
-    {
-    }
-
     public static function getInstance()
     {
         $class = get_called_class();
