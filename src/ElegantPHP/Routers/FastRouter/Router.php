@@ -2,10 +2,9 @@
 
 namespace ElegantPHP\Routers\FastRouter;
 
-use ElegantPHP\Factory\BaseFactory;
 use ElegantPHP\Routers\BaseRouter;
 
-class Router extends BaseFactory implements BaseRouter
+class Router implements BaseRouter
 {
     private $routeCollection;
     private $httpMethod;

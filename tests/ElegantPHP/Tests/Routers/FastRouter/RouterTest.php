@@ -4,13 +4,28 @@ namespace ElegantPHP\Tests\Routers\FastRouter;
 
 use ElegantPHP\Factory\Builder;
 use ElegantPHP\Routers\FastRouter\Route;
+use ElegantPHP\Routers\FastRouter\RouteCollection;
 use ElegantPHP\Routers\FastRouter\Router;
 
 class RouterTest extends \PHPUnit_Framework_TestCase
 {
     public function testRoute()
     {
-        $router = Builder::getInstance('ElegantPHP\Routers\FastRouter\Router');
+        $routeCollection = new RouteCollection();
+        $routeCollection->add(new Route('home', 'ControllerHomeExampleTest::index', 'home'));
+        $routeCollection->add(new Route('contact', 'ControllerExampleTest::add', 'contact-form'));
+        $router = new Router();
+        $router->init($routeCollection);
+
+        $router->dispatch('GET', 'home');
+
+        $this->assertEquals('home', $router->getUri(), 'It must be equals to home');
+
+        $this->assertEquals('GET', $router->getHttpMethod(), 'It must be equals to GET');
+        $router->setHttpMethod('POST');
+        $this->assertEquals('POST', $router->getHttpMethod(), 'It must be equals to POST');
+
+
 //        $router->init();
 
 //        $route = new Route('/', 'ControllerExampleTest::add', 'home', 'GET');
