@@ -11,7 +11,7 @@ class MatcherTest extends \PHPUnit_Framework_TestCase
 {
     public function testMatcher()
     {
-        $matcher = Matcher::getInstance();
+        $matcher = Builder::getInstance("ElegantPHP\\Routers\\FastRouter\\Matcher");
         $matcher->setPattern('/\/$/');
         $_SERVER['REQUEST_URI'] = '/home';
 
@@ -37,7 +37,7 @@ class MatcherTest extends \PHPUnit_Framework_TestCase
     }
 
     public function testGetSetParam() {
-        $matcher = Matcher::getInstance();
+        $matcher = Builder::getInstance("ElegantPHP\\Routers\\FastRouter\\Matcher");
         $matcher->setPattern('/post\/$/');
         $_SERVER['REQUEST_URI'] = '/post/';
         $matcher->setParam('id', 12);
@@ -46,7 +46,7 @@ class MatcherTest extends \PHPUnit_Framework_TestCase
     }
 
     public function testGetSetRoute() {
-        $matcher = Matcher::getInstance();
+        $matcher = Builder::getInstance("ElegantPHP\\Routers\\FastRouter\\Matcher");
         $matcher->setPattern('/post\/$/');
         $_SERVER['REQUEST_URI'] = '/post/';
         $route = new Route('/post\/$/', 'ControllerTest', 'home-post');

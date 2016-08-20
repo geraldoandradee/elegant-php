@@ -2,10 +2,7 @@
 
 namespace ElegantPHP\Routers\FastRouter;
 
-
-use ElegantPHP\Factory\BaseFactory;
-
-class Matcher extends BaseFactory
+class Matcher
 {
     private $route;
     private $pattern;
