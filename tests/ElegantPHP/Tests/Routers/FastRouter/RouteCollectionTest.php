@@ -3,6 +3,7 @@
 namespace ElegantPHP\Tests\Routers\FastRouter;
 
 
+use ElegantPHP\Factory\Builder;
 use ElegantPHP\Routers\FastRouter\Route;
 use ElegantPHP\Routers\FastRouter\RouteCollection;
 
@@ -10,7 +11,7 @@ class RouteCollectionTest extends \PHPUnit_Framework_TestCase
 {
     public function testRouteCollection()
     {
-        $routeCollection = RouteCollection::getInstance();
+        $routeCollection = Builder::getInstance("ElegantPHP\\Routers\\FastRouter\\RouteCollection");
         $routeCollection->add(new Route('/', 'ControllerExampleTest::add', 'home', 'GET'));
         $routeCollection->add(new Route('/contact', 'Contact::index', 'contact', 'POST'));
         $routes = $routeCollection->getAll();

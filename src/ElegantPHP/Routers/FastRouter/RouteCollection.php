@@ -2,10 +2,7 @@
 
 namespace ElegantPHP\Routers\FastRouter;
 
-
-use ElegantPHP\Factory\BaseFactory;
-
-class RouteCollection extends BaseFactory
+class RouteCollection
 {
     private $routes = array();
 
