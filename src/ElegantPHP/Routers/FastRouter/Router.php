@@ -2,6 +2,7 @@
 
 namespace ElegantPHP\Routers\FastRouter;
 
+use ElegantPHP\Factory\Builder;
 use ElegantPHP\Routers\BaseRouter;
 
 class Router implements BaseRouter
@@ -34,7 +35,7 @@ class Router implements BaseRouter
 
     private function match(Route $route)
     {
-        return Matcher::getInstance()->setRoute($route)->match();
+        return Builder::getInstance('ElegantPHP\Routers\FastRouter\Matcher')->setRoute($route)->match();
     }
 
     /**
